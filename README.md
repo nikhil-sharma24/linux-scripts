@@ -203,6 +203,34 @@ sudo apt install -y git curl wget htop neovim xclip build-essential tlp zram-too
 
 ---
 
+<details>
+<summary> 12.Remove Snap </summary>
+
+```bash
+	sudo rm -rf /var/cache/snapd/
+	sudo apt autoremove --purge snapd gnome-software-plugin-snap
+	rm -fr ~/snap
+	sudo apt-mark hold snapd
+```
+
+</details>
+
+---
+
+<details>
+<summary> 13. Bash History Scrolling </summary>
+
+```bash
+	echo 'TAB: menu-complete
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+' >> input.md
+```
+
+</details>
+
+---
+
 ## ✅ Final Recommended Setup
 
 - TLP enabled  
