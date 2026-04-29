@@ -261,6 +261,19 @@ git config --global core.excludesfile
 cat ~/.gitignore_global
 ```
 
+</details>
+
+---
+
+
+<details>
+<summary>🪟 15. Move Window Controls to Left (Ubuntu / GNOME)</summary>
+
+```bash
+gsettings set org.gnome.desktop.wm.preferences button-layout 'close,minimize,maximize:'
+```
+</details>
+
 ---
 
 ## ✅ Final Recommended Setup
