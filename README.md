@@ -119,14 +119,15 @@ ssh -T git@github.com
 ### Install
 
 ```bash
-sudo apt install xclip
+sudo apt install wl-clipboard
 ```
 
 ### Usage
 
 ```bash
-cat file.txt | xclip -selection clipboard
-echo "text" | xclip -selection clipboard
+echo "text" | wl-copy
+wl-copy < file.txt
+wl-paste
 ```
 
 </details>
@@ -240,6 +241,25 @@ bind -f ~/.inputrc
 ```
 
 </details>
+
+---
+
+
+<details>
+<summary>🚫 14. Global Git Ignore (.vscode)</summary>
+
+### Set global gitignore file
+```bash
+git config --global core.excludesfile ~/.gitignore_global
+# Add .vscode to global ignore
+echo ".vscode/" >> ~/.gitignore_global
+```
+
+### Verify
+```bash
+git config --global core.excludesfile
+cat ~/.gitignore_global
+```
 
 ---
 

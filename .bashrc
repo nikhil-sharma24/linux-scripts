@@ -157,7 +157,7 @@ alias zss="source ~/.bashrc"
 alias gedit="gnome-text-editor"
 
 # linux utils
-alias cpwd='pwd | xclip -selection clipboard'
+alias cpwd='pwd | wl-copy'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
