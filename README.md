@@ -276,6 +276,33 @@ gsettings set org.gnome.desktop.wm.preferences button-layout 'close,minimize,max
 
 ---
 
+
+<details>
+<summary>🪟 16. Install GNOME Extension Manager</summary>
+
+```bash
+sudo apt install gnome-shell-extension-manager
+```
+
+Launch:
+```bash
+extension-manager
+```
+
+##  Install Bluetooth Battery Extension
+
+Inside Extension Manager search for:
+
+`Bluetooth Battery Meter`
+
+Enable the extension.
+
+
+</details>
+
+---
+
+
 ## ✅ Final Recommended Setup
 
 * TLP enabled
