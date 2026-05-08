@@ -296,6 +296,13 @@ Inside Extension Manager search for:
 `Bluetooth Battery Meter`
 
 Enable the extension.
+##  Install Clipboard Manager
+
+Inside Extension Manager search for:
+
+`clipboard-indicator`
+
+Enable the extension.
 
 
 </details>
