@@ -34,6 +34,28 @@ You copy that OS’s Bluetooth key → into the other OS.
 
 ---
 
+# IMPORTANT: Pair Once In Ubuntu First
+
+Before syncing keys:
+
+- pair/connect the headphones once in Ubuntu
+- this creates the required Bluetooth folder + `info` file
+- pair again in windows as the pairing key resets
+
+Check devices:
+
+```bash
+bluetoothctl devices
+```
+
+Without this, the file below will not exist:
+
+```text
+/var/lib/bluetooth/<adapter-mac>/<device-mac>/info
+```
+
+---
+
 # Extract Key From Windows (via chntpw)
 
 ## 1. Install
@@ -64,6 +86,8 @@ sudo chntpw -e SYSTEM
 ---
 
 ## 4. Navigate Registry
+
+Run these commands exactly:
 
 ```text
 cd ControlSet001
@@ -118,6 +142,8 @@ Actual key:
 ```text
 8fb486ccbe0e8dd812da50cdb316e7a1
 ```
+
+(remove spaces + lowercase)
 
 ---
 
