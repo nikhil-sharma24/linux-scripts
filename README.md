@@ -309,6 +309,67 @@ Enable the extension.
 
 ---
 
+<details>
+<summary>🪟 17. Sticky Keys setup</summary>
+
+# keyd One-Shot Modifier Setup (Wayland Compatible)
+
+## Install
+
+```bash
+sudo apt install keyd
+```
+
+## Enable Service
+
+```bash
+sudo systemctl enable keyd
+sudo systemctl start keyd
+```
+
+## Configure
+
+```bash
+sudo mkdir -p /etc/keyd
+sudo nano /etc/keyd/default.conf
+```
+
+Paste:
+
+```ini
+[ids]
+
+*
+
+[main]
+
+leftshift = oneshot(shift)
+rightshift = oneshot(shift)
+
+leftalt = oneshot(alt)
+rightalt = oneshot(alt)
+
+leftcontrol = oneshot(control)
+rightcontrol = oneshot(control)
+```
+
+## Restart keyd
+
+```bash
+sudo systemctl restart keyd
+```
+
+## Disable GNOME Sticky Keys
+
+```bash
+gsettings set org.gnome.desktop.a11y.keyboard stickykeys-enable false
+```
+
+
+</details>
+
+---
+
 
 ## ✅ Final Recommended Setup
 
