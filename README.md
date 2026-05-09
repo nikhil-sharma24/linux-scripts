@@ -24,27 +24,6 @@ reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation
 ---
 
 <details>
-<summary>🔋 2. TLP Battery Optimization</summary>
-
-### Install & Enable
-
-```bash
-sudo apt install tlp tlp-rdw
-sudo systemctl enable tlp
-sudo systemctl start tlp
-```
-
-### Check Status
-
-```bash
-tlp-stat -s
-```
-
-</details>
-
----
-
-<details>
 <summary>⚡ 3. ZRAM Setup</summary>
 
 ### Install
@@ -423,6 +402,72 @@ this approach:
 - avoids root GUI issues
 - preserves user environment
 - is the recommended Linux workflow
+
+</details>
+
+---
+
+<details>
+<summary><strong>Fix VS Code Multi-Cursor Shortcuts on Ubuntu/GNOME</strong></summary>
+
+<br>
+
+Ubuntu/GNOME reserves these shortcuts by default:
+
+```text
+Ctrl + Alt + Up
+Ctrl + Alt + Down
+```
+
+This conflicts with VS Code multi-cursor shortcuts:
+- Add Cursor Above
+- Add Cursor Below
+
+## Remove GNOME Workspace Shortcut Conflicts
+
+Run:
+
+```bash
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-up "[]"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-down "[]"
+```
+
+## Verify
+
+```bash
+gsettings get org.gnome.desktop.wm.keybindings switch-to-workspace-up
+gsettings get org.gnome.desktop.wm.keybindings switch-to-workspace-down
+```
+
+Expected output:
+
+```bash
+@as []
+@as []
+```
+
+or:
+
+```bash
+[]
+```
+
+## Important
+
+Logout/login after applying changes on Wayland.
+
+## VS Code Shortcuts
+
+After fixing conflicts:
+
+```text
+Ctrl + Alt + Up
+Ctrl + Alt + Down
+```
+
+should work for:
+- Add cursor above
+- Add cursor below
 
 </details>
 
