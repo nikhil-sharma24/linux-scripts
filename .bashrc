@@ -159,8 +159,12 @@ alias gedit="gnome-text-editor"
 # linux utils
 alias cpwd='pwd | wl-copy'
 
+export EDITOR="code --wait"
+export VISUAL="code --wait"
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path bash)"
+export PATH="$PATH:/home/nikhil/Downloads/go1.26.3.linux-amd64/go/bin"

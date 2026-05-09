@@ -341,6 +341,10 @@ Paste:
 
 *
 
+[global]
+
+oneshot_timeout = 500
+
 [main]
 
 leftshift = oneshot(shift)
@@ -365,6 +369,60 @@ sudo systemctl restart keyd
 gsettings set org.gnome.desktop.a11y.keyboard stickykeys-enable false
 ```
 
+
+</details>
+
+---
+
+<details>
+<summary><strong>Use VS Code as sudoedit Editor</strong></summary>
+
+<br>
+
+This allows editing root-owned files using your normal VS Code instance while preserving:
+
+- Dark mode
+- Extensions
+- Wayland integration
+- Fonts/themes/settings
+- Existing VS Code session
+
+Add to `~/.bashrc` or `~/.zshrc`:
+
+```bash
+export EDITOR="code --wait"
+export VISUAL="code --wait"
+```
+
+Reload shell:
+
+```bash
+source ~/.bashrc
+```
+
+Now safely edit privileged files using:
+
+```bash
+sudoedit /etc/keyd/default.conf
+```
+
+Unlike:
+
+```bash
+sudo code
+```
+
+or:
+
+```bash
+sudo gnome-text-editor
+```
+
+this approach:
+- avoids broken themes
+- avoids root GUI issues
+- preserves user environment
+- is the recommended Linux workflow
 
 </details>
 
