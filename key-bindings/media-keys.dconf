@@ -1,0 +1,4 @@
+[/]
+control-center=['<Super>i']
+home=['<Super>e']
+rotate-video-lock-static=['<Super>o', 'XF86RotationLockToggle']
