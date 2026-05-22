@@ -474,6 +474,112 @@ should work for:
 ---
 
 
+<details>
+<summary><strong>Macos like full screen move to new workspace</strong></summary>
+
+```bash
+gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['<Super>f']"
+```
+
+```bash
+cat << 'EOF' > ~/.local/share/gnome-shell/extensions/fullscreen-workspace@local/extension.js
+import Meta from 'gi://Meta';
+
+let signals = [];
+let createdSignal = null;
+
+function moveToNewWorkspace(win) {
+
+    if (win._moved)
+        return;
+
+    win._moved = true;
+
+    const manager = global.workspace_manager;
+
+    // Create workspace
+    manager.append_new_workspace(
+        false,
+        global.get_current_time()
+    );
+
+    const newWorkspace =
+        manager.get_workspace_by_index(
+            manager.n_workspaces - 1
+        );
+
+    // Move window
+    win.change_workspace(newWorkspace);
+
+    // Switch to workspace
+    newWorkspace.activate_with_focus(
+        win,
+        global.get_current_time()
+    );
+}
+
+function handleWindow(win) {
+
+    const signal = win.connect(
+        'notify::fullscreen',
+        () => {
+
+            if (win.is_fullscreen()) {
+                moveToNewWorkspace(win);
+            } else {
+                win._moved = false;
+            }
+        }
+    );
+
+    signals.push([win, signal]);
+}
+
+export default class Extension {
+
+    enable() {
+
+        // Existing windows
+        global.get_window_actors().forEach(actor => {
+            handleWindow(actor.meta_window);
+        });
+
+        // New windows
+        createdSignal = global.display.connect(
+            'window-created',
+            (_, win) => {
+                handleWindow(win);
+            }
+        );
+    }
+
+    disable() {
+
+        if (createdSignal)
+            global.display.disconnect(createdSignal);
+
+        signals.forEach(([win, signal]) => {
+            try {
+                win.disconnect(signal);
+            } catch {}
+        });
+
+        signals = [];
+    }
+}
+EOF
+
+gnome-extensions disable fullscreen-workspace@local
+gnome-extensions enable fullscreen-workspace@local
+
+echo "Reloaded extension"
+```
+
+Logout then login
+
+</details>
+
+
 ## ✅ Final Recommended Setup
 
 * TLP enabled
