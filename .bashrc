@@ -155,6 +155,8 @@ alias ns='npm start'
 alias zs="code ~/.bashrc"
 alias zss="source ~/.bashrc"
 alias gedit="gnome-text-editor"
+alias sedit='sudo -E gnome-text-editor'
+alias ca='cd /home/nikhil/Desktop/linux_scripts; ./createAlias.sh'
 
 # linux utils
 alias cpwd='pwd | wl-copy'
@@ -168,3 +170,5 @@ export NVM_DIR="$HOME/.nvm"
 
 [[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path bash)"
 export PATH="$PATH:/home/nikhil/Downloads/go1.26.3.linux-amd64/go/bin"
+alias sql='sudo -u postgres psql;'
+alias bkup='cp ~/.bashrc ~/Desktop/linux_scripts/;'
