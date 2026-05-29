@@ -1,0 +1,6 @@
+{
+  "uuid": "fullscreen-workspace@local",
+  "name": "Fullscreen Workspace",
+  "description": "Moves fullscreen apps to a new workspace",
+  "shell-version": ["50"]
+}
